@@ -60,6 +60,15 @@ public class TodoController {
         return "200 OK";
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/todos/{id}", method = RequestMethod.DELETE, produces = MediaType.TEXT_PLAIN_VALUE)
+    public String deleteTodo(@PathVariable("id") Long id) {
+
+        todoService.deleteTodo(id);
+
+        return "200 OK";
+    }
+
     @RequestMapping(value = "/addTodo", method = RequestMethod.POST)
     public String addTodo(@ModelAttribute("todo") @Valid TodoDto todoDto, BindingResult bindingResult, Model model) {
 

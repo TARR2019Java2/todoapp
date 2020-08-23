@@ -29,6 +29,13 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/logout">Wyloguj</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
 
@@ -62,6 +69,12 @@
             <tbody>
             <tr th:each="todo: ${completed}">
                 <td th:text="${todo.descritpion}" />
+                <td>
+                    <input type="hidden" th:value="${todo.id}" />
+                </td>
+                <td>
+                    <button type="button" class="delete-button">Usuń</button>
+                </td>
             </tr>
             </tbody>
         </table>

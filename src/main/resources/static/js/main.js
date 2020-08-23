@@ -48,3 +48,22 @@ function done(doneItem) {
     $('#done-items').append(markup);
     $('.remove').remove();
 }
+
+$('.delete-button').on('click', function (e) {
+    var deleteItemId = $(this).parents('tr').find('input[type="hidden"]').val();
+    var button = $(this);
+
+
+    $.ajax({
+        url: '/todos/' + deleteItemId,
+        type: 'DELETE',
+        async: false,
+        success: function (result) {
+            button.parent().parent().remove();
+        },
+        error: function (error) {
+            // checkBox.prop('checked', false);
+            alert('Todos cannot be deleted !');
+        }
+    });
+})

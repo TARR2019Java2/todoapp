@@ -65,4 +65,10 @@ public class TodoService {
             todoRepository.save(todo);
         }
     }
+
+    public void deleteTodo(Long id) {
+
+        TodoEntity entity = todoRepository.getById(id);
+        todoRepository.delete(entity);
+    }
 }
